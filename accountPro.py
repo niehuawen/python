@@ -50,7 +50,11 @@ def deposit_money(filename):
     #用户数据字典
     userdata = pickle_load(filename)
     #取钱金额
-    d_money = int(raw_input("how much you want to deposit ?").strip())
+    try:
+        d_money = int(raw_input("how much you want to deposit ?").strip())
+    except:
+        print("input error!")
+        return
     #用户初始金额
     init_money = userdata[1]["Smoney"]
     #取钱后余额
@@ -85,6 +89,7 @@ def withDraw(filename):
     # 将数据写会至原文件
     pickle_dump(userdata, filename)
 
+#借钱函数
 def lendBorrow(filename):
     # 用户数据字典
     userdata = pickle_load(filename)
@@ -110,6 +115,7 @@ def lendBorrow(filename):
     # 将数据写会至原文件
     pickle_dump(userdata, filename)
 
+#存储账号菜单函数
 def SaOpsMenu():
     prompt = """
     (S)how Storage account 查看
@@ -251,7 +257,7 @@ def CaToCheck(filename):
     # 将数据写会至原文件
     pickle_dump(userdata, filename)
 
-
+#支票账号菜单函数
 def CaOpsMenu():
     prompt = """
     (S)how cecking account 查看支票账号
@@ -291,12 +297,7 @@ def CaOpsMenu():
         elif choice == "q":
             break
 
-def FaOpsMenu():
-    print("FaOpsMenu")
-
-def DaOpsMenu():
-    print("DaOpsMenu")
-
+#主菜单函数
 def showMenu():
     prompt = """
     1.Storage account
@@ -309,18 +310,14 @@ def showMenu():
         try:
             choice = int(raw_input(prompt).strip())
         except:
-            choice = 5
-        if choice not in range(1,6):
-            choice = 5
+            choice = 3
+        if choice not in range(1,3):
+            choice = 3
         elif choice == 1:
             SaOpsMenu()
         elif choice == 2:
             CaOpsMenu()
         elif choice == 3:
-            FaOpsMenu()
-        elif choice == 4:
-            DaOpsMenu()
-        elif choice == 5:
             break
 
 if __name__ == "__main__":
