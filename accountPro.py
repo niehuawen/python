@@ -15,9 +15,9 @@ fdata.close()
 """
 
 def pickle_load(filename):
-    with open(filename,"rb") as input_file:
+    with open(filename,"rb") as raw_input_file:
         try:
-            return pickle.load(input_file)
+            return pickle.load(raw_input_file)
         except:
             return None
 
@@ -50,13 +50,13 @@ def deposit_money(filename):
     #用户数据字典
     userdata = pickle_load(filename)
     #取钱金额
-    d_money = int(input("how much you want to deposit ?").strip())
+    d_money = int(raw_input("how much you want to deposit ?").strip())
     #用户初始金额
     init_money = userdata[1]["Smoney"]
     #取钱后余额
     userdata[1]["Smoney"] = init_money - d_money
     #是否确定取钱操作
-    flag = input("Do you want to continue this deposit ops ? (y stand for continue)")
+    flag = raw_input("Do you want to continue this deposit ops ? (y stand for continue)")
     if flag == "yes" or flag == "y":
         print("Deposit money %s success!" % (d_money))
     #取消取钱操作时确定退回被减去的金额，防止多次取消操作导致大于原有初始金额
@@ -70,13 +70,13 @@ def withDraw(filename):
     # 用户数据字典
     userdata = pickle_load(filename)
     # 存钱金额
-    w_money = int(input("how much you want to withDraw ?").strip())
+    w_money = int(raw_input("how much you want to withDraw ?").strip())
     # 用户初始金额
     init_money = userdata[1]["Smoney"]
     # 存钱后余额
     userdata[1]["Smoney"] = init_money + w_money
     # 是否确定存钱操作
-    flag = input("Do you want to continue this withdraw ops ? (y stand for continue)")
+    flag = raw_input("Do you want to continue this withdraw ops ? (y stand for continue)")
     if flag == "yes" or flag == "y":
         print("Withdraw money %s success!" % (w_money))
     # 取消存钱操作时确定退回被存进的金额，防止多次取消操作导致少于原有初始金额
@@ -89,7 +89,7 @@ def lendBorrow(filename):
     # 用户数据字典
     userdata = pickle_load(filename)
     # 借出金额
-    l_money = int(input("how much you want to lendBorrow ?").strip())
+    l_money = int(raw_input("how much you want to lendBorrow ?").strip())
     # 用户初始金额
     init_money = userdata[1]["Smoney"]
     init_lend = userdata[1]["lend"]
@@ -98,7 +98,7 @@ def lendBorrow(filename):
         userdata[1]["Smoney"] = init_money - l_money
         userdata[1]["lend"] = init_lend + l_money
         # 是否确定借钱操作
-        flag = input("Do you want to continue this lendout ops ? (y stand for continue)")
+        flag = raw_input("Do you want to continue this lendout ops ? (y stand for continue)")
         if flag == "yes" or flag == "y":
             print("Lendout money %s success!" % (l_money))
         # 取消存钱操作时确定退回被存进的金额，防止多次取消操作导致少于原有初始金额
@@ -120,13 +120,13 @@ def SaOpsMenu():
     Enter Char [S D W L B] Choice:"""
     while True:
         try:
-            choice = input(prompt).strip().lower()
+            choice = raw_input(prompt).strip().lower()
         except:
             choice = "q"
         if choice not in "sdwlbq":
             choice == "q"
         elif choice == "s":
-            #fname = input("datafile:").strip()
+            #fname = raw_input("datafile:").strip()
             fname = "data.txt"
             if os.path.isfile(fname):
                 show_account(fname)
@@ -161,7 +161,7 @@ def showMenu():
     Enter Number 1-5 Choice:"""
     while True:
         try:
-            choice = int(input(prompt).strip())
+            choice = int(raw_input(prompt).strip())
         except:
             choice = 5
         if choice not in range(1,6):
