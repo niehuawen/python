@@ -15,7 +15,7 @@ def Delete():
 def Find():
     pass
 
-def Show()
+def Show():
     pass
 
 def showMenu():
@@ -44,5 +44,5 @@ def showMenu():
             Find()
         elif choice == "s":
             Show()
-        elif choice == "q"
+        elif choice == "q":
             break
