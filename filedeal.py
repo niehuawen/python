@@ -7,7 +7,7 @@ def textrow(line):
 fd = open("myfile.txt")
 flist = map(textrow,fd)
 fd.close()
-
+"""
 while True:
     try:
         flag = raw_input("new or old:").strip()
@@ -26,3 +26,6 @@ while True:
         for newline in flist:
             fd.write(newline+"\n")
         fd.close()
+"""
+
+print(map(lambda line:line.strip(),open("myfile.txt")))
