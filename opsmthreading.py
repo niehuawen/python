@@ -3,6 +3,7 @@
 
 #多线程同时修改变量，导致改乱balance解决方案
 #修改变量前，必须先获得线程锁
+#存在锁的多线程段代码是以单线程方式方式执行，即不能利用并发
 
 import time,threading
 #银行存款
@@ -16,7 +17,7 @@ def change_it(n):
     balance = balance - n
 
 def run_thread(n):
-    for i in range(100000):
+    for i in range(1000000):
         #先要获取锁
         lock.acquire()
         try:
@@ -27,8 +28,10 @@ def run_thread(n):
             lock.release()
 t1 = threading.Thread(target=run_thread,args=(5,))
 t2 = threading.Thread(target=run_thread,args=(8,))
+time1 = time.time()
 t1.start()
 t2.start()
 t1.join()
 t2.join()
-print(balance)
+time2 = time.time()
+print(balance,time2-time1)
