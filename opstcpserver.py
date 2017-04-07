@@ -11,7 +11,7 @@ s.bind(("127.0.0.1",9999))
 s.listen(5)
 print("Waiting for connection...")
 
-#sock参数为sock对象
+#此处的sock参数为sock对象
 def tcplink(sock,addr):
     print("Accept new connection from %s:%s..." % addr)
     sock.send("Welcome!")
@@ -28,5 +28,6 @@ while True:
     #接受一个新连接
     sock,addr = s.accept()
     #创建新线程来处理tcp连接
+    #每个连接都必须创建新线程（或进程）来处理，否则，单线程在处理连接的过程中，无法接受其他客户端的连接
     t = threading.Thread(target=tcplink,args=(sock,addr))
     t.start()
