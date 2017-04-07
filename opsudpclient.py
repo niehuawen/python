@@ -9,4 +9,3 @@ for data in ["nie","hua","wen"]:
     #接收数据
     print(s.recv(1024))
 s.close()
-
