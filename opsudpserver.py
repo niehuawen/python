@@ -10,6 +10,7 @@ s.bind(("127.0.0.1",9999))
 
 print("Bind UDP on 9999...")
 
+
 while True:
     # 接收数据
     data, addr = s.recvfrom(1024)
