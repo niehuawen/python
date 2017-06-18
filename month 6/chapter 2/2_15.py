@@ -15,6 +15,7 @@ def input_number():
             print(e)
 
 # 由小至大输出
+'''#实现方式一：
 def small2large(num1,num2,num3):
     t = 0
     if num1 > num2:
@@ -30,8 +31,20 @@ def small2large(num1,num2,num3):
         num2 = num3
         num3 = t
     return(num1,num2,num3)
+'''
+# 实现方式二：交换变量值
+def small2large(num1,num2,num3):
+    if num1 > num2:
+        num1,num2 = num2,num1
+    if num1 > num3:
+        num1,num3 = num3,num1
+    if num2 > num3:
+        num2,num3 = num3,num2
+    return(num1,num2,num3)
+
 
 # 由大至小输出
+'''# 实现方式一：
 def large2small(num1,num2,num3):
     t = 0
     if num1 < num2:
@@ -46,6 +59,16 @@ def large2small(num1,num2,num3):
         t = num2
         num2 = num3
         num3 = t
+    return(num1,num2,num3)
+'''
+# 实现方式二：交换变量值
+def large2small(num1,num2,num3):
+    if num1 < num2:
+        num1,num2 = num2,num1
+    if num1 < num3:
+        num1,num3 = num3,num1
+    if num2 < num3:
+        num2,num3 = num3,num2
     return(num1,num2,num3)
 
 if __name__ == "__main__":
