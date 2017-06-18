@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -- coding:utf-8 --
-#
+# 用户输入数据、菜单显示选择、求和、求均值、退出登录操作
 
 def input_num():
     user_number = []
