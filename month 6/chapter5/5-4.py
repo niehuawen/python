@@ -8,7 +8,8 @@ if __name__ == "__main__":
     while True:
         number = enter()
         if isinstance(number,float):
-            break
+            print("%s is a float number , please input a int number." % number)
+            continue
         elif isinstance(number,int):
             if (number % 4 == 0 and number % 100 != 0) or (number % 400 == 0 ):
                 print("%s is a leap year." % number)
